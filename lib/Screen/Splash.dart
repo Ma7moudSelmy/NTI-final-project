@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projcet_nti_final/Home.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
@@ -26,12 +27,5 @@ class _SplashState extends State<Splash> {
         ),
       ),
     );
-  }
-}
-
-class Home extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text("Welcome to Home Screen")));
   }
 }
