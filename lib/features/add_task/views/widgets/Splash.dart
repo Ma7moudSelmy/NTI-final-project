@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projcet_nti_final/Home.dart';
+import 'package:projcet_nti_final/features/add_task/views/widgets/Home.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
