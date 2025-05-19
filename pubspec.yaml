@@ -21,6 +21,11 @@ dependencies:
   scroll_loop_auto_scroll: ^0.0.5
   image_picker: ^0.8.7+3
   flutter_animate: ^4.5.2
+  flutter_svg: ^2.1.0
+  flutter_bloc: ^9.1.1
+  dartz: ^0.10.1
+  dio: ^5.8.0+1
+  http: ^1.4.0
   
   
 

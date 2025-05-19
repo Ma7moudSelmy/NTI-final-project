@@ -1,10 +1,10 @@
-import 'package:e_commerce_flutter/core/utils/animated_switcher_wrapper.dart';
-import 'package:e_commerce_flutter/core/utils/product.dart';
-import 'package:e_commerce_flutter/features/home/views/widgets/product_controller.dart';
-import 'package:e_commerce_flutter/features/onboarding/views/empty_cart.dart';
-import 'package:e_commerce_flutter/features/onboarding/views/extensions.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:e_commerce_flutter/core/utils/product.dart';
+import 'package:e_commerce_flutter/core/utils/animated_switcher_wrapper.dart';
+import 'package:e_commerce_flutter/features/onboarding/views/empty_cart.dart';
+import 'package:e_commerce_flutter/features/onboarding/views/extensions.dart';
+import 'package:e_commerce_flutter/features/home/views/widgets/product_controller.dart';
 
 final ProductController controller = Get.put(ProductController());
 
@@ -33,11 +33,10 @@ class CartScreen extends StatelessWidget {
               horizontal: 5,
             ),
             decoration: BoxDecoration(
-              color: Colors.grey[200]?.withValues(alpha: 0.6),
+              color: Colors.grey[200]?.withOpacity(0.6),
               borderRadius: BorderRadius.circular(10),
             ),
             child: Row(
-              spacing: 5,
               children: [
                 Expanded(
                   child: Container(
@@ -79,7 +78,7 @@ class CartScreen extends StatelessWidget {
                       Text(
                         controller.getCurrentSize(product),
                         style: TextStyle(
-                          color: Colors.black.withValues(alpha: 0.5),
+                          color: Colors.black,
                           fontWeight: FontWeight.w400,
                         ),
                       ),

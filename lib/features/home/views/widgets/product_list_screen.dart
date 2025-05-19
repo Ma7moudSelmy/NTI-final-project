@@ -1,10 +1,10 @@
-import 'package:e_commerce_flutter/core/utils/app_color.dart';
-import 'package:e_commerce_flutter/core/utils/app_data.dart';
-import 'package:e_commerce_flutter/core/wrapper/liSst_item_selector.dart';
-import 'package:e_commerce_flutter/features/home/views/widgets/product_controller.dart';
-import 'package:e_commerce_flutter/features/home/views/widgets/product_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:e_commerce_flutter/core/utils/app_data.dart';
+import 'package:e_commerce_flutter/core/utils/app_color.dart';
+import 'package:e_commerce_flutter/core/wrapper/liSst_item_selector.dart';
+import 'package:e_commerce_flutter/features/home/views/widgets/product_grid_view.dart';
+import 'package:e_commerce_flutter/features/home/views/widgets/product_controller.dart';
 
 enum AppbarActionType { leading, trailing }
 
@@ -141,7 +141,7 @@ class ProductListScreen extends StatelessWidget {
             child: Text(
               "SEE ALL",
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                    color: Colors.deepOrange.withValues(alpha: 0.7),
+                    color: Colors.deepOrange
                   ),
             ),
           )
