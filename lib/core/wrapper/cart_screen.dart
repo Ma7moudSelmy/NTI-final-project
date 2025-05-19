@@ -3,8 +3,9 @@ import 'package:e_commerce_flutter/core/utils/product.dart';
 import 'package:e_commerce_flutter/features/home/views/widgets/product_controller.dart';
 import 'package:e_commerce_flutter/features/onboarding/views/empty_cart.dart';
 import 'package:e_commerce_flutter/features/onboarding/views/extensions.dart';
-import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 final ProductController controller = Get.put(ProductController());
 
