@@ -1,17 +1,19 @@
+import 'package:e_commerce_flutter/core/utils/bottom_nav_bar_item.dart';
+import 'package:e_commerce_flutter/core/utils/product.dart';
+import 'package:e_commerce_flutter/core/utils/recommended_product.dart';
+import 'package:e_commerce_flutter/core/wrapper/categorical.dart';
+import 'package:e_commerce_flutter/core/wrapper/numerical.dart';
+import 'package:e_commerce_flutter/features/home/views/widgets/product_category.dart';
+import 'package:e_commerce_flutter/features/home/views/widgets/product_size_type.dart';
 import 'package:flutter/material.dart';
-import 'package:e_commerce_flutter/src/model/product.dart';
-import 'package:e_commerce_flutter/src/model/numerical.dart';
-import 'package:e_commerce_flutter/src/model/categorical.dart';
+
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:e_commerce_flutter/src/model/product_category.dart';
-import 'package:e_commerce_flutter/src/model/product_size_type.dart';
-import 'package:e_commerce_flutter/src/model/recommended_product.dart';
-import 'package:e_commerce_flutter/src/model/bottom_nav_bar_item.dart';
 
 class AppData {
   const AppData._();
 
-  static const String dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesetting'
+  static const String dummyText =
+      'Lorem Ipsum is simply dummy text of the printing and typesetting'
       ' industry. Lorem Ipsum has been the industry\'s standard dummy text'
       ' ever since the 1500s, when an unknown printer took a galley of type'
       ' and scrambled it to make a type specimen book.';

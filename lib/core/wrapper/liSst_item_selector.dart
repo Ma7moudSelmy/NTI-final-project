@@ -1,7 +1,7 @@
+import 'package:e_commerce_flutter/features/home/views/widgets/product_category.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:e_commerce_flutter/src/model/product_category.dart';
 
 class ListItemSelector extends StatefulWidget {
   const ListItemSelector({

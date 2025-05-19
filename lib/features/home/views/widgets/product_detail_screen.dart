@@ -1,11 +1,12 @@
+import 'package:e_commerce_flutter/core/utils/app_color.dart';
+import 'package:e_commerce_flutter/core/utils/carousel_slider.dart';
+import 'package:e_commerce_flutter/core/utils/product.dart';
+import 'package:e_commerce_flutter/features/home/views/widgets/product_controller.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:e_commerce_flutter/core/app_color.dart';
-import 'package:e_commerce_flutter/src/model/product.dart';
+
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:e_commerce_flutter/src/view/widget/carousel_slider.dart';
-import 'package:e_commerce_flutter/src/controller/product_controller.dart';
 
 final ProductController controller = Get.put(ProductController());
 
@@ -76,7 +77,9 @@ class ProductDetailScreen extends StatelessWidget {
             alignment: Alignment.center,
             width: controller.isNominal(product) ? 40 : 70,
             decoration: BoxDecoration(
-              color: controller.sizeType(product)[index].isSelected == false ? Colors.white : AppColor.lightOrange,
+              color: controller.sizeType(product)[index].isSelected == false
+                  ? Colors.white
+                  : AppColor.lightOrange,
               borderRadius: BorderRadius.circular(10),
               border: Border.all(
                 color: Colors.grey,
@@ -131,7 +134,9 @@ class ProductDetailScreen extends StatelessWidget {
                         Row(
                           children: [
                             Text(
-                              product.off != null ? "\$${product.off}" : "\$${product.price}",
+                              product.off != null
+                                  ? "\$${product.off}"
+                                  : "\$${product.price}",
                               style: Theme.of(context).textTheme.displayLarge,
                             ),
                             const SizedBox(width: 3),
@@ -148,8 +153,11 @@ class ProductDetailScreen extends StatelessWidget {
                             ),
                             const Spacer(),
                             Text(
-                              product.isAvailable ? "Available in stock" : "Not available",
-                              style: const TextStyle(fontWeight: FontWeight.w500),
+                              product.isAvailable
+                                  ? "Available in stock"
+                                  : "Not available",
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.w500),
                             )
                           ],
                         ),
@@ -171,7 +179,9 @@ class ProductDetailScreen extends StatelessWidget {
                         SizedBox(
                           width: double.infinity,
                           child: ElevatedButton(
-                            onPressed: product.isAvailable ? () => controller.addToCart(product) : null,
+                            onPressed: product.isAvailable
+                                ? () => controller.addToCart(product)
+                                : null,
                             child: const Text("Add to cart"),
                           ),
                         )

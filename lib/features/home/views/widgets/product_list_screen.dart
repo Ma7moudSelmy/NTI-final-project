@@ -1,10 +1,10 @@
+import 'package:e_commerce_flutter/core/utils/app_color.dart';
+import 'package:e_commerce_flutter/core/utils/app_data.dart';
+import 'package:e_commerce_flutter/core/wrapper/liSst_item_selector.dart';
+import 'package:e_commerce_flutter/features/home/views/widgets/product_controller.dart';
+import 'package:e_commerce_flutter/features/home/views/widgets/product_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:e_commerce_flutter/core/app_data.dart';
-import 'package:e_commerce_flutter/core/app_color.dart';
-import 'package:e_commerce_flutter/src/controller/product_controller.dart';
-import 'package:e_commerce_flutter/src/view/widget/product_grid_view.dart';
-import 'package:e_commerce_flutter/src/view/widget/list_item_selector.dart';
 
 enum AppbarActionType { leading, trailing }
 
@@ -80,7 +80,10 @@ class ProductListScreen extends StatelessWidget {
                       children: [
                         Text(
                           '30% OFF DURING \nCOVID 19',
-                          style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                          style: Theme.of(context)
+                              .textTheme
+                              .displaySmall
+                              ?.copyWith(
                                 color: Colors.white,
                               ),
                         ),
@@ -88,7 +91,8 @@ class ProductListScreen extends StatelessWidget {
                         ElevatedButton(
                           onPressed: () {},
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: AppData.recommendedProducts[index].buttonBackgroundColor,
+                            backgroundColor: AppData.recommendedProducts[index]
+                                .buttonBackgroundColor,
                             elevation: 0,
                             padding: const EdgeInsets.symmetric(horizontal: 18),
                             shape: RoundedRectangleBorder(
@@ -98,7 +102,8 @@ class ProductListScreen extends StatelessWidget {
                           child: Text(
                             "Get Now",
                             style: TextStyle(
-                              color: AppData.recommendedProducts[index].buttonTextColor!,
+                              color: AppData
+                                  .recommendedProducts[index].buttonTextColor!,
                             ),
                           ),
                         )
@@ -168,7 +173,7 @@ class ProductListScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Hello Sina",
+                  "Hello Ma7moud",
                   style: Theme.of(context).textTheme.displayLarge,
                 ),
                 Text(
@@ -182,7 +187,8 @@ class ProductListScreen extends StatelessWidget {
                   builder: (ProductController controller) {
                     return ProductGridView(
                       items: controller.filteredProducts,
-                      likeButtonPressed: (index) => controller.isFavorite(index),
+                      likeButtonPressed: (index) =>
+                          controller.isFavorite(index),
                       isPriceOff: (product) => controller.isPriceOff(product),
                     );
                   },

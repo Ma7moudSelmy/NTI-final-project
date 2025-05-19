@@ -1,5 +1,5 @@
+import 'package:e_commerce_flutter/core/utils/app_color.dart';
 import 'package:flutter/material.dart';
-import 'package:e_commerce_flutter/core/app_color.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class CarouselSlider extends StatefulWidget {
