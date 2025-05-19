@@ -2,7 +2,7 @@ import '../signin_view.dart';
 import '../signup_view.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/styles/colors.dart';
-import '../../../../core/utils/my_navigator.dart';
+import '../../../../core/utils/navigator.dart';
 import '../../../../core/styles/text_styles.dart';
 
 class GetStartView extends StatelessWidget {
