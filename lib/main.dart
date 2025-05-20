@@ -1,3 +1,4 @@
+import 'package:e_commerce_flutter/features/auth/views/Splash/splash_view.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui' show PointerDeviceKind;
 import 'package:e_commerce_flutter/core/utils/app_theme.dart';
