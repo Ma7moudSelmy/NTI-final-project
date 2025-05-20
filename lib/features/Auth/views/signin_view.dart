@@ -1,3 +1,5 @@
+import 'package:e_commerce_flutter/core/utils/navigator.dart';
+import 'package:e_commerce_flutter/features/onboarding/views/home_screen.dart';
 import 'package:flutter/material.dart';
 import '../../../core/utils/custom.dart';
 import '../../../core/styles/colors.dart';
@@ -6,7 +8,6 @@ import '../../../core/styles/text_styles.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../Manager/login_cubit/login_cubit.dart';
 import '../Manager/login_cubit/login_state.dart';
-
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
@@ -87,7 +88,6 @@ class LoginView extends StatelessWidget {
                                 content: Text('Login Successfully'),
                               ),
                             );
-                         
                           } else if (state is LoginErrorState) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
@@ -105,6 +105,8 @@ class LoginView extends StatelessWidget {
                             return CustomElvButt(
                               onPressed: () {
                                 LoginCubit.get(context).onLogin(context);
+                                MyNavigator.goTo(
+                                    context: context, screen: HomeScreen());
                               },
                               text: "Login",
                             );

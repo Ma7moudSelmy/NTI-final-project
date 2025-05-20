@@ -1,3 +1,5 @@
+import 'package:e_commerce_flutter/core/utils/navigator.dart';
+import 'package:e_commerce_flutter/features/onboarding/views/home_screen.dart';
 import 'package:flutter/material.dart';
 import '../../../core/utils/custom.dart';
 import '../../../core/utils/custom2.dart';
@@ -131,7 +133,6 @@ class RegisterView extends StatelessWidget {
                                 content: Text('Register Successfully'),
                               ),
                             );
-                          
                           }
                           if (state is RegisterErrorState) {
                             ScaffoldMessenger.of(context).showSnackBar(
@@ -150,6 +151,8 @@ class RegisterView extends StatelessWidget {
                             return CustomElvButt(
                               onPressed: () {
                                 RegisterCubit.get(context).onRegister(context);
+                                MyNavigator.goTo(
+                                    context: context, screen: HomeScreen());
                               },
                               text: "Create Account",
                             );
