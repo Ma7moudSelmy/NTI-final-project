@@ -1,5 +1,6 @@
 import 'package:e_commerce_flutter/core/utils/app_data.dart';
 import 'package:e_commerce_flutter/core/utils/page_transition_switcher_wrapper.dart';
+import 'package:e_commerce_flutter/core/wrapper/cart_screen.dart';
 import 'package:e_commerce_flutter/features/home/views/widgets/product_list_screen.dart';
 import 'package:e_commerce_flutter/features/onboarding/views/favorite_screen.dart';
 import 'package:e_commerce_flutter/features/onboarding/views/profile_screen.dart';
@@ -13,6 +14,7 @@ class HomeScreen extends StatefulWidget {
     ProductListScreen(),
     FavoriteScreen(),
     ProfileScreen(),
+    CartScreen(),
   ];
 
   @override
