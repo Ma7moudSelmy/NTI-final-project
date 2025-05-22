@@ -217,10 +217,6 @@ class AppData {
       Icon(Icons.favorite),
     ),
     const BottomNavBarItem(
-      "Cart",
-      Icon(Icons.shopping_cart),
-    ),
-    const BottomNavBarItem(
       "Profile",
       Icon(Icons.person),
     ),

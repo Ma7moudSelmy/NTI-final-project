@@ -2,6 +2,7 @@ import 'package:e_commerce_flutter/features/home/views/widgets/product_category.
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter/foundation.dart'; // <-- مضافة لاستخدام describeEnum
 
 class ListItemSelector extends StatefulWidget {
   const ListItemSelector({
@@ -20,7 +21,7 @@ class ListItemSelector extends StatefulWidget {
 class _ListItemSelectorState extends State<ListItemSelector> {
   Widget item(item, int index) {
     return Tooltip(
-      message: item.type.name.capitalizeFirst,
+      message: describeEnum(item.type).capitalizeFirst!, // تم تعديل السطر ده
       child: AnimatedContainer(
         margin: const EdgeInsets.only(left: 5),
         duration: const Duration(milliseconds: 500),

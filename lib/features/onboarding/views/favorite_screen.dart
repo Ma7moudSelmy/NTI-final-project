@@ -1,7 +1,5 @@
-import 'package:e_commerce_flutter/core/wrapper/cart_screen.dart';
 import 'package:e_commerce_flutter/features/home/views/widgets/product_controller.dart';
 import 'package:e_commerce_flutter/features/home/views/widgets/product_grid_view.dart';
-import 'package:e_commerce_flutter/features/home/views/widgets/product_list_screen.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +8,9 @@ class FavoriteScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ProductController controller = Get.find<ProductController>();
     controller.getFavoriteItems();
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -20,8 +20,8 @@ class FavoriteScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
-        child: GetBuilder(
-          builder: (ProductController controller) {
+        child: GetBuilder<ProductController>(
+          builder: (controller) {
             return ProductGridView(
               items: controller.filteredProducts,
               likeButtonPressed: (index) => controller.isFavorite(index),

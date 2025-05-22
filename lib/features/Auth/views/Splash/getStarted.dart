@@ -3,7 +3,6 @@ import '../signup_view.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/styles/colors.dart';
 import '../../../../core/utils/navigator.dart';
-import '../../../../core/styles/text_styles.dart';
 
 class GetStartView extends StatelessWidget {
   const GetStartView({super.key});
@@ -11,87 +10,108 @@ class GetStartView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(children: [
-        Container(
-          decoration: const BoxDecoration(
+      body: Stack(
+        children: [
+          // الخلفية مع overlay
+          Container(
+            decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage(
-                    '',
+                image: AssetImage(
+                    'assets/images/Green and White Simple Login and Sign-up Website Page UI Desktop Prototype.jpg'),
+                fit: BoxFit.cover,
+              ),
+            ),
+            child: Container(
+              color: Colors.black.withOpacity(0.4), // لون شفاف فوق الصورة
+            ),
+          ),
+
+          // المحتوى
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 32.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Spacer(flex: 3),
+                  const Text(
+                    'You want Authentic, here you go!',
+                    style: TextStyle(
+                      color: Colors.white, // خليت اللون أبيض عشان يبان
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  fit: BoxFit.fill)),
-          child: Center(
-              child: Padding(
-            padding: const EdgeInsets.only(left: 37, right: 37),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * .5,
-                ),
-                const Text(
-                  'You want Authentic, here you go!',
-                  style: TextStyles.authTextStyle,
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                const Text(
-                  'Find it here, buy it now!',
-                  style: TextStyles.smallaAuthTextStyle,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * .71,
-                  child: ElevatedButton(
+                  const SizedBox(height: 10),
+                  const Text(
+                    'Find it here, buy it now!',
+                    style: TextStyle(
+                      color: Colors.white70,
+                      fontSize: 16,
+                    ),
+                  ),
+                  const Spacer(),
+
+                  // زر اللوجن
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
                       onPressed: () {
                         MyNavigator.goTo(
                             context: context, screen: const LoginView());
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.primary,
+                        foregroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(4),
+                          borderRadius: BorderRadius.circular(30),
                         ),
+                        elevation: 5,
+                        padding: const EdgeInsets.symmetric(vertical: 16),
                       ),
                       child: const Text(
                         'Login',
-                        style: TextStyles.textButtonStyle,
-                      )),
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * .71,
-                  child: ElevatedButton(
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+
+                  // زر الرجستر
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
                       onPressed: () {
                         MyNavigator.goTo(
                             context: context, screen: const RegisterView());
                       },
                       style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        foregroundColor: AppColors.primary,
                         side: const BorderSide(
                           color: AppColors.primary,
                           width: 2,
                         ),
-                        backgroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(4),
+                          borderRadius: BorderRadius.circular(30),
                         ),
+                        elevation: 3,
+                        padding: const EdgeInsets.symmetric(vertical: 16),
                       ),
                       child: const Text(
                         'Register',
-                        style: TextStyle(
-                          fontSize: 23,
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.primary,
-                        ),
-                      )),
-                ),
-              ],
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ),
+                  ),
+                  const Spacer(flex: 2),
+                ],
+              ),
             ),
-          )),
-        ),
-      ]),
+          ),
+        ],
+      ),
     );
   }
 }
