@@ -204,6 +204,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false, // هنا التعديل لإزالة السهم
         title: const Text("Profile"),
         actions: [
           IconButton(
