@@ -1,5 +1,6 @@
 import 'package:e_commerce_flutter/core/utils/animated_switcher_wrapper.dart';
 import 'package:e_commerce_flutter/core/utils/product.dart';
+import 'package:e_commerce_flutter/core/wrapper/payment_screen.dart';
 import 'package:e_commerce_flutter/features/home/views/widgets/product_controller.dart';
 import 'package:e_commerce_flutter/features/onboarding/views/empty_cart.dart';
 import 'package:e_commerce_flutter/features/onboarding/views/extensions.dart';
@@ -24,6 +25,7 @@ class _CartScreenState extends State<CartScreen> {
 
   PreferredSizeWidget _appBar(BuildContext context) {
     return AppBar(
+      automaticallyImplyLeading: false, // شيل السهم من AppBar
       title: Text(
         "My cart",
         style: Theme.of(context).textTheme.displayLarge,
@@ -198,7 +200,11 @@ class _CartScreenState extends State<CartScreen> {
             onPressed: controller.isEmptyCart
                 ? null
                 : () {
-                    // Navigate to payment screen
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const PaymentScreen(),
+                        ));
                   },
             child: const Text("Buy Now"),
           ),
