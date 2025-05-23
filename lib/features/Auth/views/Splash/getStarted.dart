@@ -1,5 +1,5 @@
 import '../signin_view.dart';
-import '../signup_view.dart';
+import '../RegisterView.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/styles/colors.dart';
 import '../../../../core/utils/navigator.dart';
