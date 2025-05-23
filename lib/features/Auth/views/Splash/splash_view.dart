@@ -11,11 +11,11 @@ class SplashView extends StatefulWidget {
 class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
-    getOnboarding();
     super.initState();
+    getOnboarding();
   }
 
-  getOnboarding() {
+  void getOnboarding() {
     Future.delayed(const Duration(seconds: 5), () {
       Navigator.of(context).push(
         MaterialPageRoute(
@@ -29,15 +29,11 @@ class _SplashViewState extends State<SplashView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              'assets/images/logo.png',
-              width: MediaQuery.of(context).size.width * 0.733,
-              height: MediaQuery.of(context).size.height * 0.12,
-            )
-          ],
+        child: Image.asset(
+          'assets/images/logo.png',
+          width: MediaQuery.of(context).size.width * 0.9, // 90% عرض الشاشة
+          height: MediaQuery.of(context).size.height * 0.3, // 30% ارتفاع الشاشة
+          fit: BoxFit.contain, // عشان الصورة تتناسب وما تتحرفش
         ),
       ),
     );
