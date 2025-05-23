@@ -11,7 +11,6 @@ class PaymentScreen extends StatefulWidget {
 class _PaymentScreenState extends State<PaymentScreen> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController cardNumberController = TextEditingController();
-  final TextEditingController expiryDateController = TextEditingController();
   final TextEditingController cvvController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
 
@@ -27,7 +26,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
   @override
   void dispose() {
     cardNumberController.dispose();
-    expiryDateController.dispose();
     cvvController.dispose();
     nameController.dispose();
     super.dispose();
@@ -38,8 +36,18 @@ class _PaymentScreenState extends State<PaymentScreen> {
       setState(() => isLoading = true);
       Future.delayed(const Duration(seconds: 2), () {
         setState(() => isLoading = false);
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Payment Successful!')),
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: const Text("Success"),
+            content: const Text("Your payment was completed successfully."),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text("OK"),
+              )
+            ],
+          ),
         );
       });
     }
@@ -52,7 +60,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Payment Info"),
-        automaticallyImplyLeading: false,
+        centerTitle: true,
+        backgroundColor: Theme.of(context).colorScheme.primary,
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
@@ -60,6 +69,18 @@ class _PaymentScreenState extends State<PaymentScreen> {
           key: _formKey,
           child: ListView(
             children: [
+              // الصورة فوق كل الحقول
+              ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.asset(
+                  'assets/images/dWVtU0E9.jpg',
+                  height: 180,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              const SizedBox(height: 25), // مسافة بين الصورة وباقي المحتوى
+
               if (cardTypeImage != null)
                 Padding(
                   padding: const EdgeInsets.only(bottom: 10),
@@ -75,25 +96,13 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 decoration: const InputDecoration(
                   labelText: "Card Number",
                   prefixIcon: Icon(Icons.credit_card),
+                  border: OutlineInputBorder(),
                 ),
                 validator: (value) =>
                     value!.length != 16 ? "Enter 16-digit card number" : null,
                 onChanged: (value) => setState(() {}),
               ),
-              TextFormField(
-                controller: expiryDateController,
-                keyboardType: TextInputType.datetime,
-                decoration: const InputDecoration(
-                  labelText: "Expiry Date (MM/YY)",
-                  prefixIcon: Icon(Icons.date_range),
-                ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) return "Required";
-                  final regex = RegExp(r'^(0[1-9]|1[0-2])\/?([0-9]{2})$');
-                  if (!regex.hasMatch(value)) return "Invalid format";
-                  return null;
-                },
-              ),
+              const SizedBox(height: 12),
               TextFormField(
                 controller: cvvController,
                 keyboardType: TextInputType.number,
@@ -107,6 +116,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     ),
                     onPressed: () => setState(() => isObscure = !isObscure),
                   ),
+                  border: const OutlineInputBorder(),
                 ),
                 inputFormatters: [
                   FilteringTextInputFormatter.digitsOnly,
@@ -115,11 +125,13 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 validator: (value) =>
                     value!.length < 3 ? "Enter valid CVV" : null,
               ),
+              const SizedBox(height: 12),
               TextFormField(
                 controller: nameController,
                 decoration: const InputDecoration(
                   labelText: "Cardholder Name",
                   prefixIcon: Icon(Icons.person),
+                  border: OutlineInputBorder(),
                 ),
                 validator: (value) =>
                     value!.isEmpty ? "Enter cardholder name" : null,
@@ -131,12 +143,16 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     ? const SizedBox(
                         height: 18,
                         width: 18,
-                        child: CircularProgressIndicator(strokeWidth: 2),
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          color: Colors.white,
+                        ),
                       )
                     : const Icon(Icons.payment),
                 label: Text(isLoading ? "Processing..." : "Pay Now"),
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 16),
+                  textStyle: const TextStyle(fontSize: 16),
                 ),
               ),
             ],
