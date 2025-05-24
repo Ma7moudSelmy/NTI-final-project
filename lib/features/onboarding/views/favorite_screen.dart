@@ -11,7 +11,7 @@ class FavoriteScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false, // ❌ يشيل السهم من البار
+        automaticallyImplyLeading: false,
         title: Text(
           "Favorites",
           style: Theme.of(context).textTheme.displayLarge,
