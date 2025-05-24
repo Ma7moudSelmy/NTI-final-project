@@ -1,5 +1,6 @@
 import 'package:e_commerce_flutter/core/utils/navigator.dart';
 import 'package:e_commerce_flutter/features/Auth/views/signin_view.dart';
+import 'package:e_commerce_flutter/features/onboarding/views/home_screen.dart';
 import 'package:flutter/material.dart';
 import '../../../core/utils/custom.dart';
 import '../../../core/utils/custom2.dart';
@@ -36,12 +37,13 @@ class RegisterView extends StatelessWidget {
                           if (value!.isEmpty) {
                             return 'Please enter your name';
                           }
+                          if (!RegExp(r'^[a-zA-Z\s]+$').hasMatch(value)) {
+                            return 'Name must contain letters only';
+                          }
                           return null;
                         },
                         controller: RegisterCubit.get(context).nameController,
-                        prefixIcon: const Icon(
-                          Icons.person,
-                        ),
+                        prefixIcon: const Icon(Icons.person),
                         hintText: 'Full Name',
                       ),
                       Customformfeild(
@@ -49,40 +51,47 @@ class RegisterView extends StatelessWidget {
                           if (value!.isEmpty) {
                             return 'Please enter your phone number';
                           }
+                          if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
+                            return 'Phone must contain numbers only';
+                          }
+                          if (value.length < 10 || value.length > 15) {
+                            return 'Phone number must be between 10 and 15 digits';
+                          }
                           return null;
                         },
                         controller: RegisterCubit.get(context).phoneController,
-                        prefixIcon: const Icon(
-                          Icons.phone,
-                        ),
+                        prefixIcon: const Icon(Icons.phone),
                         hintText: 'Phone',
                       ),
                       Customformfeild(
                         validator: (value) {
-                          if (value!.isEmpty || !value.contains('@')) {
+                          if (value!.isEmpty) {
                             return 'Please enter your email';
+                          }
+                          if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w]{2,4}')
+                              .hasMatch(value)) {
+                            return 'Enter a valid email address';
                           }
                           return null;
                         },
                         controller: RegisterCubit.get(context).emailController,
-                        prefixIcon: const Icon(
-                          Icons.email_rounded,
-                        ),
+                        prefixIcon: const Icon(Icons.email_rounded),
                         hintText: 'Email',
                       ),
                       Customformfeild(
                         validator: (value) {
-                          if (value!.isEmpty || value.length < 6) {
+                          if (value!.isEmpty) {
                             return 'Please enter your password';
+                          }
+                          if (value.length < 6) {
+                            return 'Password must be at least 6 characters';
                           }
                           return null;
                         },
                         controller:
                             RegisterCubit.get(context).passwordController,
                         visiable: RegisterCubit.get(context).passIsVisiable,
-                        prefixIcon: const Icon(
-                          Icons.lock,
-                        ),
+                        prefixIcon: const Icon(Icons.lock),
                         suffixIcon: IconButton(
                           onPressed: () =>
                               RegisterCubit.get(context).changePassVisibility(),
@@ -94,22 +103,21 @@ class RegisterView extends StatelessWidget {
                       ),
                       Customformfeild(
                         validator: (value) {
-                          if (value!.isEmpty ||
-                              value.length < 6 ||
-                              value !=
-                                  RegisterCubit.get(context)
-                                      .passwordController
-                                      .text) {
-                            return 'Please enter your password';
+                          if (value!.isEmpty) {
+                            return 'Please confirm your password';
+                          }
+                          if (value !=
+                              RegisterCubit.get(context)
+                                  .passwordController
+                                  .text) {
+                            return 'Passwords do not match';
                           }
                           return null;
                         },
                         controller: RegisterCubit.get(context)
                             .confirmPasswordController,
                         visiable: RegisterCubit.get(context).confPassVisiable,
-                        prefixIcon: const Icon(
-                          Icons.lock,
-                        ),
+                        prefixIcon: const Icon(Icons.lock),
                         suffixIcon: IconButton(
                           onPressed: () =>
                               RegisterCubit.get(context).changConfPassVisi(),
@@ -150,9 +158,15 @@ class RegisterView extends StatelessWidget {
                           } else {
                             return CustomElvButt(
                               onPressed: () {
-                                RegisterCubit.get(context).onRegister(context);
-                                MyNavigator.goTo(
-                                    context: context, screen: LoginView());
+                                if (RegisterCubit.get(context)
+                                    .formKey
+                                    .currentState!
+                                    .validate()) {
+                                  RegisterCubit.get(context)
+                                      .onRegister(context);
+                                  MyNavigator.goTo(
+                                      context: context, screen: HomeScreen());
+                                }
                               },
                               text: "Create Account",
                             );

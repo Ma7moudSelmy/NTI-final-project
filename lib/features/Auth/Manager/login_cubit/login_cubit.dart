@@ -16,22 +16,19 @@ class LoginCubit extends Cubit<LoginState> {
     emit(LoginChangeVisibilityState(passIsVisiable));
   }
 
-  onLogin(BuildContext context) async {
+  void onLogin(BuildContext context) {
     emit(LoginLoadingState());
-    await Future.delayed(const Duration(seconds: 2));
-    if (formKey.currentState!.validate()) {
-      var response = await userRepo.login(
-          name: emailController.text, password: passwordController.text);
-      response.fold(
-        (String error) {
-          emit(LoginErrorState(error));
-        },
-        (r) {
-          emit(LoginSuccessState());
-        },
-      );
-    } else {
-      emit(LoginErrorState("Please enter valid data"));
-    }
+
+    // Simulate login process
+    Future.delayed(const Duration(seconds: 2), () {
+      final email = emailController.text;
+      final password = passwordController.text;
+
+      if (email == "test@test.com" && password == "123456") {
+        emit(LoginSuccessState());
+      } else {
+        emit(LoginErrorState("Log in successfully"));
+      }
+    });
   }
 }
