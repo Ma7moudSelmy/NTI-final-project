@@ -1,5 +1,4 @@
 import 'package:e_commerce_flutter/core/utils/navigator.dart';
-import 'package:e_commerce_flutter/features/Auth/views/signin_view.dart';
 import 'package:e_commerce_flutter/features/onboarding/views/home_screen.dart';
 import 'package:flutter/material.dart';
 import '../../../core/utils/custom.dart';
